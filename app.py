@@ -34,7 +34,8 @@ def main():  # put application's code here
 
     while bad_image:
         musti_candidate = musti_image_object.load_musti_image_for_datetime(now_obj, offset)
-        musti_classified = musti_model_object.model.predict(musti_image_object.preprocess_image(musti_candidate))
+        musti_preprocessed = musti_image_object.preprocess_image(musti_candidate)
+        musti_classified = musti_model_object.model.predict(musti_preprocessed)
         # ToDo: implement accuracy
         if musti_classified[0] == 1:
             classification_result = "BINNEN"
