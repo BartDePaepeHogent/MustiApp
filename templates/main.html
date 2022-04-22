@@ -7,7 +7,7 @@
 </head>
 <body>
     <div id="element1">
-        <img src="{{ url_for('main_plot') }}" alt="Image">
+        <img src="{{ url_for('static', filename= image_name ) }}" alt="Image">
     </div>
     <div id="element2">
         <p>{{ classification_name }}</p>

@@ -48,13 +48,5 @@ def main():  # put application's code here
         classification_name = musti_image_object.getImageName()
         image_name = classification_name
 
-    return render_template('main.html', classification_result=classification_result, classification_name=classification_name)
+    return render_template('main.html', classification_result=classification_result, classification_name=classification_name, image_name=image_name)
 
-@app.route('/main.png')
-def main_plot():
-    """The view for rendering the scatter chart"""
-    img = os.path.join("nieuw", image_name)
-    return send_file(img, mimetype='image/jpg', cache_timeout=0)
-
-if __name__ == '__main__':
-    app.run()
