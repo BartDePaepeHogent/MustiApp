@@ -3,15 +3,16 @@
 <head>
 <meta charset="UTF-8">
 <link href="../static/style.css" rel="stylesheet" type="text/css">
-<title>Typical Climate</title>
+<title>Musti</title>
 </head>
 <body>
     <div id="element1">
         <img src="{{ url_for('static', filename= image_name ) }}" alt="Image">
     </div>
     <div id="element2">
-        <p>{{ classification_name }}</p>
-        <p>{{ classification_result }}</p>
+        <p>foto: {{ classification_name }}</p>
+        <p>klasse: {{ classification_result }}</p>
+        <p>betrouwbaarheid: {{ probability }}</p>
     </div>
 </body>
 </html>

@@ -35,18 +35,22 @@ def main():  # put application's code here
     while bad_image:
         musti_candidate = musti_image_object.load_musti_image_for_datetime(now_obj, offset)
         musti_preprocessed = musti_image_object.preprocess_image(musti_candidate)
-        musti_classified = musti_model_object.model.predict(musti_preprocessed)
-        # ToDo: implement accuracy
-        if musti_classified[0] == 1:
-            classification_result = "BINNEN"
-            bad_image = False
-        elif musti_classified[0] == 2:
-            classification_result = "BUITEN"
-            bad_image = False
+        # get the probability
+        probability = musti_model_object.model.predict_proba(musti_preprocessed)
+        if probability > 0.928:
+            musti_classified = musti_model_object.model.predict(musti_preprocessed, offset)
+            if musti_classified[0] == 1:
+                classification_result = "BINNEN"
+                bad_image = False
+            elif musti_classified[0] == 2:
+                classification_result = "BUITEN"
+                bad_image = False
+            else:
+                offset = musti_image_object.getOffset()
+            classification_name = musti_image_object.getImageName()
+            image_name = classification_name
         else:
             offset = musti_image_object.getOffset()
-        classification_name = musti_image_object.getImageName()
-        image_name = classification_name
 
-    return render_template('main.html', classification_result=classification_result, classification_name=classification_name, image_name=image_name)
+    return render_template('main.html', classification_result=classification_result, classification_name=classification_name, image_name=image_name, probability=probability)
 

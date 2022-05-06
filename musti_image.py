@@ -3,6 +3,7 @@ from datetime import datetime
 import numpy as np
 import pandas as pd
 from PIL import Image, ImageOps
+from sklearn.preprocessing import StandardScaler
 
 class MustiImage:
 
@@ -54,7 +55,9 @@ class MustiImage:
         X_test_array = np.array(kolom.tolist())
         sample = X_test_array[0]
         sample = sample.reshape(1,-1)
-        return sample
+        scaler = StandardScaler()
+        sample_scaled = scaler.fit_transform(sample.astype(np.float64))
+        return sample_scaled
 
     def getOffset(self):
         return self.offset
