@@ -25,6 +25,8 @@ class MustiImage:
 
 
     def load_musti_image_for_datetime(self, input_datetime, offset):
+        if offset == len(self.timestampFiles) - 1:
+            return None
 
         input_timestamp = datetime.timestamp(input_datetime)
 
