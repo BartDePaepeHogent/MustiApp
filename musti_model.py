@@ -13,7 +13,7 @@ import joblib
 class MustiModel:
 
     def __init__(self):
-        self.model = joblib.load(os.path.join("models","musti_model.pkl"))
+        self.model = joblib.load(os.path.join("models","final_model.pkl"))
 
     def aanmakenDf(self, groep, label):
         # Drie lege lijsten worden aangemaakt die dan uiteindelijk samen dataframe zullen vormen
@@ -50,9 +50,9 @@ class MustiModel:
 
     def train(self):
         # Dataframe aanmaken
-        aanwezig = r"classificatie/aanwezig/"  # 852 foto's
-        buiten = r"classificatie/buiten/"  # 389 foto's
-        niets = r"classificatie/niets/"  # 1399 foto's
+        aanwezig = r"data/aanwezig/"  # 852 foto's
+        buiten = r"data/buiten/"  # 389 foto's
+        niets = r"data/niets/"  # 1399 foto's
         # Eerst wordt per map een panda dataframe aangemaakt
         nietsDf = self.aanmakenDf(niets, 0)
         aanwezigDf = self.aanmakenDf(aanwezig, 1)

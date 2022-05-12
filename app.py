@@ -3,7 +3,6 @@ import os
 from flask import Flask, request, render_template, send_file
 from datetime import datetime
 
-import musti_train
 from musti_image import MustiImage
 from musti_model import MustiModel
 
@@ -66,6 +65,7 @@ def main():  # put application's code here
 
 
     if request.method == 'POST':
+        # this will result in http time-out because the function runs to long ..
         musti_model_object.train()
         return render_template('main.html', classification_result=classification_result,
                                    classification_name=classification_name, image_name=image_name,
