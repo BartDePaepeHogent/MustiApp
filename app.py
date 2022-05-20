@@ -41,13 +41,13 @@ def main():  # put application's code here
             image_name = "waar_is_musti.jpeg"
             probability = 0
             break;
-        musti_preprocessed = musti_image_object.preprocess_image(musti_candidate)
+        #musti_preprocessed = musti_image_object.preprocess_image(musti_candidate)
         # get the probability
-        probability_array = musti_model_object.model.predict_proba(musti_preprocessed)
+        probability_array = musti_model_object.model.predict_proba(musti_candidate)
         max_probability = max(probability_array[0])
 
-        if max_probability > 0.33:
-            musti_classified = musti_model_object.model.predict(musti_preprocessed)
+        if max_probability > 0.82:
+            musti_classified = musti_model_object.model.predict(musti_candidate)
             if musti_classified[0] == 1:
                 classification_result = "BINNEN"
                 probability = probability_array[0][musti_classified[0]]

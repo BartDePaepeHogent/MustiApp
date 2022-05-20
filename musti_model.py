@@ -13,7 +13,7 @@ import joblib
 class MustiModel:
 
     def __init__(self):
-        self.model = joblib.load(os.path.join("models","final_model.pkl"))
+        self.model = joblib.load(os.path.join("models","test.pkl"))
 
     def aanmakenDf(self, groep, label):
         # Drie lege lijsten worden aangemaakt die dan uiteindelijk samen dataframe zullen vormen
