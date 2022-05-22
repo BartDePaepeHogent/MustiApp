@@ -1,0 +1,5 @@
+* unzip the package and navigate to the root directory in your command line
+* create virtual environement
+* install required packages (requirements.txt)
+* run app (python app.py)
+* visit http://127.0.0.1:5000
